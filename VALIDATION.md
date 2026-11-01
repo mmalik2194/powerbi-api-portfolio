@@ -36,3 +36,8 @@ Independent Python controls are in validation_controls.json. Native scenario out
 
 ## Remaining limits
 Direct API endpoints were tested by the downloader; native Desktop calculation tests used the downloaded snapshot branches. Live M refresh has not been independently exercised in Power BI Service, and service refresh scheduling/credentials remain unconfigured. No online publication, RLS deployment, production performance benchmark or measured business impact has been performed. The solar scenario is not a validated production forecast.
+
+## Added Power Platform source kits
+The Power Apps kit includes exact control/formula mappings, a SharePoint list schema and an optional provisioning script. Its source references were checked against those schemas. It has not been executed in a Microsoft tenant and is not an exported .msapp.
+
+The Power Automate project contains a designer build specification and executable dry-run logic, not an importable flow/solution export. All nine local tests pass. Public airport assets are attributed to OurAirports; request data is explicitly synthetic. Native app screenshots, cloud-flow run screenshots, connections and tenant deployment will be handled separately.

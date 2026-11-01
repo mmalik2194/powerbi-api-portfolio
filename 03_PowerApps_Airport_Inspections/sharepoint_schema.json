@@ -1,0 +1,24 @@
+{
+  "Airports": {
+    "Title": "Text (unique airport identifier)",
+    "AirportName": "Text",
+    "AirportType": "Text",
+    "Country": "Text",
+    "Region": "Text",
+    "Municipality": "Text",
+    "Latitude": "Number",
+    "Longitude": "Number",
+    "ScheduledService": "Text"
+  },
+  "Inspections": {
+    "Title": "Text (unique request identifier)",
+    "AirportIdent": "Text (airport identifier)",
+    "Priority": "Text: High, Medium or Low",
+    "Status": "Text: Open, In progress or Closed",
+    "DueAt": "DateTime (UTC)",
+    "OwnerEmail": "Text",
+    "IssueDescription": "Note",
+    "ResolutionNotes": "Note",
+    "LastReminderDate": "Text (yyyy-MM-dd UTC)"
+  }
+}

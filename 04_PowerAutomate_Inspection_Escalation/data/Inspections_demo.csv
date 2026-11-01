@@ -1,0 +1,13 @@
+Title,AirportIdent,Priority,Status,DueAt,OwnerEmail,IssueDescription,ResolutionNotes,LastReminderDate
+DEMO-001,AU-0539,High,Open,2026-10-27T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-002,AU-0796,Medium,In progress,2026-10-28T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-003,YABA,Low,Closed,2026-10-29T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,SYNTHETIC DEMO: completed checklist.,
+DEMO-004,YAMB,High,Open,2026-10-30T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-005,YARA,Medium,In progress,2026-10-31T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-006,YARM,Low,Closed,2026-11-01T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,SYNTHETIC DEMO: completed checklist.,
+DEMO-007,YAYE,High,Open,2026-11-02T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-008,YBAR,Medium,In progress,2026-11-03T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-009,YBAS,Low,Closed,2026-11-04T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,SYNTHETIC DEMO: completed checklist.,
+DEMO-010,YBBN,High,Open,2026-11-05T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-011,YBCG,Medium,In progress,2026-11-06T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,,
+DEMO-012,YBCK,Low,Closed,2026-11-07T00:00:00Z,reviewer@example.invalid,SYNTHETIC DEMO: inspect signage and record observations.,SYNTHETIC DEMO: completed checklist.,

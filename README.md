@@ -1,6 +1,6 @@
-# Power BI API Portfolio
+# Data Analytics & Automation Portfolio
 
-Two advanced Power BI projects built from free public APIs: **six report pages and 56 DAX measures**, tested in Power BI Desktop.
+Two advanced Power BI projects built from free public APIs, plus Power Apps and Power Automate source kits. The Power BI reports contain **six report pages and 56 DAX measures**, tested in Power BI Desktop.
 
 **[Download both projects (ZIP)](https://github.com/mmalik2194/powerbi-api-portfolio/releases/download/v1.0.0/Advanced_PowerBI_API_Portfolio.zip)** · **[Development report (PBIX)](https://github.com/mmalik2194/powerbi-api-portfolio/releases/download/v1.0.0/Development_Intelligence.pbix)** · **[Solar report (PBIX)](https://github.com/mmalik2194/powerbi-api-portfolio/releases/download/v1.0.0/Solar_Weather_Intelligence.pbix)**
 
@@ -33,6 +33,27 @@ NASA POWER API data for **five Australian cities, 2020–2025**. Includes discon
 3. For solar YoY/YTD, select one year. Change capacity or performance ratio to test the scenario.
 4. To inspect the editable source, clone this repository and open either `.pbip` file. Keep its Report and SemanticModel sibling folders together, then select Refresh.
 5. To refresh directly from the public APIs, set `UseLiveAPI=true` under **Transform data → Manage Parameters** and apply. The default false setting uses the reproducible embedded snapshot.
+
+## Power Platform source projects
+
+| Project | Included code and assets | Status |
+|---|---|---|
+| [Airport inspection tracker — Power Apps + SharePoint](03_PowerApps_Airport_Inspections/README.md) | [Power Fx formulas](03_PowerApps_Airport_Inspections/PowerFx.fx), list schema, provisioning PowerShell, public airport master and synthetic requests | Buildable source kit; no native app or tenant deployment claimed |
+| [Overdue inspection escalation — Power Automate](04_PowerAutomate_Inspection_Escalation/README.md) | [Flow build specification](04_PowerAutomate_Inspection_Escalation/flow_build_spec.json), [executable simulator](04_PowerAutomate_Inspection_Escalation/simulate.py), nine tests and synthetic requests | Designer specification and tested selection logic; not an importable exported solution |
+
+**[Download the Power Platform source kits](https://github.com/mmalik2194/powerbi-api-portfolio/releases/download/v1.1.0/Power_Platform_Source_Kits.zip)**
+
+The two projects form one workflow: select a public airport → create an issue with an owner and due date → record progress and resolution → identify overdue open issues for a daily coordinator digest. The public assets are real; inspection issues and SLA rules are demonstration data. Connection values are supplied by the deployer.
+
+Run the automation tests without Microsoft credentials:
+
+```bash
+cd 04_PowerAutomate_Inspection_Escalation
+python -m unittest test_simulate.py
+python simulate.py
+```
+
+Additional Power Platform screenshots and demonstration videos will be prepared separately after native tenant setup. No messages have been sent by these projects.
 
 ## Technical evidence
 

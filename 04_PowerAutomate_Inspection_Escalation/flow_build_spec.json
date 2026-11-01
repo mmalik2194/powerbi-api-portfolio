@@ -1,0 +1,104 @@
+{
+  "name": "Daily overdue inspection digest",
+  "status": "Build specification; not an importable solution or active flow",
+  "trigger": {
+    "type": "Recurrence",
+    "frequency": "Day",
+    "interval": 1,
+    "timeZone": "AUS Eastern Standard Time",
+    "hours": [
+      8
+    ],
+    "minutes": [
+      0
+    ],
+    "concurrency": 1
+  },
+  "configuration": [
+    "SharePoint SiteAddress",
+    "Inspections List ID",
+    "Development TestMailbox"
+  ],
+  "actions": [
+    {
+      "name": "RunTime",
+      "type": "Compose",
+      "expression": "utcNow()"
+    },
+    {
+      "name": "TodayUTC",
+      "type": "Compose",
+      "expression": "formatDateTime(outputs('RunTime'),'yyyy-MM-dd')"
+    },
+    {
+      "name": "Get_inspections",
+      "connector": "SharePoint",
+      "action": "Get items",
+      "FilterQuery": "Status ne 'Closed' and DueAt ne null and DueAt lt '@{outputs('RunTime')}'",
+      "pagination": true,
+      "paginationThreshold": 100000,
+      "note": "Index Status and DueAt. Large lists may need partitioned indexed views despite pagination."
+    },
+    {
+      "name": "Eligible",
+      "type": "Filter array",
+      "from": "body('Get_inspections')?['value']",
+      "advancedExpression": "@not(equals(coalesce(item()?['LastReminderDate'], ''), outputs('TodayUTC')))"
+    },
+    {
+      "name": "Any_overdue",
+      "type": "Condition",
+      "expression": "greater(length(body('Eligible')), 0)"
+    },
+    {
+      "name": "Digest_rows",
+      "type": "Select",
+      "from": "body('Eligible')",
+      "mapping": {
+        "Request": "item()?['Title']",
+        "Airport": "item()?['AirportIdent']",
+        "Priority": "item()?['Priority']",
+        "DueUTC": "item()?['DueAt']",
+        "AssignedOwner": "item()?['OwnerEmail']"
+      }
+    },
+    {
+      "name": "Digest_table",
+      "type": "Create HTML table",
+      "from": "body('Digest_rows')"
+    },
+    {
+      "name": "Send_digest",
+      "connector": "Office 365 Outlook",
+      "action": "Send an email (V2)",
+      "To": "CONFIGURED_TEST_MAILBOX",
+      "subject": "DEMO: overdue airport inspections @{outputs('TodayUTC')}",
+      "body": "Synthetic demonstration requests. Review overdue items below.<br/>@{body('Digest_table')}"
+    },
+    {
+      "name": "Mark_reminded",
+      "type": "Apply to each",
+      "from": "body('Eligible')",
+      "concurrency": 1,
+      "runAfter": "Send_digest Succeeded",
+      "action": {
+        "connector": "SharePoint",
+        "action": "Update item",
+        "ID": "items('Mark_reminded')?['ID']",
+        "Title": "items('Mark_reminded')?['Title']",
+        "LastReminderDate": "outputs('TodayUTC')",
+        "note": "Only map required fields plus LastReminderDate; leave all other fields unmapped to avoid overwriting concurrent edits."
+      }
+    },
+    {
+      "name": "Failure_scope",
+      "type": "Scope",
+      "runAfter": "Main scope Failed or TimedOut",
+      "actions": [
+        "Record error details in run history or a separate FlowErrors list",
+        "Terminate with Failed status; do not mark reminders complete"
+      ]
+    }
+  ],
+  "deliverySemantics": "Best-effort once per UTC day for successful runs. A send succeeding followed by a failed stamp can cause a duplicate on rerun. Email has no exactly-once guarantee."
+}

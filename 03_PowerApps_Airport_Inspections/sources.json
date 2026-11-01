@@ -1,0 +1,21 @@
+{
+  "provider": "OurAirports",
+  "documentation": "https://ourairports.com/data/",
+  "download_url": "https://davidmegginson.github.io/ourairports-data/airports.csv",
+  "retrieved": "2026-11-01",
+  "original_snapshot_sha256": "6c600b7821829c2bd672c97b0c1e25b51a12e1e281fbd6fb1b698156b17d6acb",
+  "original_snapshot_included": false,
+  "selection": {
+    "iso_country": "AU",
+    "airport_types": [
+      "large_airport",
+      "medium_airport"
+    ],
+    "sort": "ident ascending",
+    "limit": 150
+  },
+  "selected_file": "data/Airports_import.csv",
+  "selected_rows": 150,
+  "selected_file_sha256": "54917dc5096598a82c83d1e08c8e7220db2d1c90f3f44aff4aa9ca900f7a48af",
+  "inspection_records": "Synthetic demonstration data; not reported defects"
+}
