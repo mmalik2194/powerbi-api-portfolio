@@ -1,0 +1,72 @@
+[
+  {
+    "name": "countries",
+    "url": "https://api.worldbank.org/v2/country?format=json&per_page=400",
+    "file": "01_Global_Development_API/api_snapshots/countries.json",
+    "retrieved": "2026-11-01",
+    "sha256": "c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce"
+  },
+  {
+    "name": "population",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&date=2000:2024&per_page=20000",
+    "file": "01_Global_Development_API/api_snapshots/population.json",
+    "retrieved": "2026-11-01",
+    "sha256": "e3217640523452e3d1c388a17ab23f037e3480730ee49e5100a9dc13fbb76825"
+  },
+  {
+    "name": "life",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SP.DYN.LE00.IN?format=json&date=2000:2024&per_page=20000",
+    "file": "01_Global_Development_API/api_snapshots/life.json",
+    "retrieved": "2026-11-01",
+    "sha256": "5ccbe961c5e26d9e5c05b8ffa01503016beb9de1ecd47c36a0401aaef0e67a1a"
+  },
+  {
+    "name": "gdp",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.PCAP.PP.KD?format=json&date=2000:2024&per_page=20000",
+    "file": "01_Global_Development_API/api_snapshots/gdp.json",
+    "retrieved": "2026-11-01",
+    "sha256": "5b9c813610f47b7b9cdff9fb533b0b1115b96fea709103ab673d4cac03bfe7a6"
+  },
+  {
+    "name": "unemployment",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SL.UEM.TOTL.ZS?format=json&date=2000:2024&per_page=20000",
+    "file": "01_Global_Development_API/api_snapshots/unemployment.json",
+    "retrieved": "2026-11-01",
+    "sha256": "7573155694e1cd8332530d38bef0a0cf40ce773e58954c235915104d9d653eb6"
+  },
+  {
+    "name": "Sydney",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=ALLSKY_SFC_SW_DWN%2CT2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CWS10M&community=RE&longitude=151.2093&latitude=-33.8688&start=20200101&end=20251231&format=JSON&time-standard=LST",
+    "file": "02_Solar_Weather_API/api_snapshots/Sydney.json",
+    "retrieved": "2026-11-01",
+    "sha256": "3e3052741b5f7d0e922eb5bc0865aee42362e60fde145b6ab00906d8212d5540"
+  },
+  {
+    "name": "Melbourne",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=ALLSKY_SFC_SW_DWN%2CT2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CWS10M&community=RE&longitude=144.9631&latitude=-37.8136&start=20200101&end=20251231&format=JSON&time-standard=LST",
+    "file": "02_Solar_Weather_API/api_snapshots/Melbourne.json",
+    "retrieved": "2026-11-01",
+    "sha256": "3779426c4ba8da1d0b7a6ab38163b65dfe8814a8653e5a6d69d086fe740b5cc7"
+  },
+  {
+    "name": "Brisbane",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=ALLSKY_SFC_SW_DWN%2CT2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CWS10M&community=RE&longitude=153.0251&latitude=-27.4698&start=20200101&end=20251231&format=JSON&time-standard=LST",
+    "file": "02_Solar_Weather_API/api_snapshots/Brisbane.json",
+    "retrieved": "2026-11-01",
+    "sha256": "154865bf009111a85832d88fecf8ab35c3372986be56b57fe4aa23a6a67171ce"
+  },
+  {
+    "name": "Perth",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=ALLSKY_SFC_SW_DWN%2CT2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CWS10M&community=RE&longitude=115.8613&latitude=-31.9523&start=20200101&end=20251231&format=JSON&time-standard=LST",
+    "file": "02_Solar_Weather_API/api_snapshots/Perth.json",
+    "retrieved": "2026-11-01",
+    "sha256": "58c148b21007c10e325e5d86563982702452562dea0fcbee095ab5cfd8401ae2"
+  },
+  {
+    "name": "Adelaide",
+    "url": "https://power.larc.nasa.gov/api/temporal/daily/point?parameters=ALLSKY_SFC_SW_DWN%2CT2M_MAX%2CT2M_MIN%2CPRECTOTCORR%2CWS10M&community=RE&longitude=138.6007&latitude=-34.9285&start=20200101&end=20251231&format=JSON&time-standard=LST",
+    "file": "02_Solar_Weather_API/api_snapshots/Adelaide.json",
+    "retrieved": "2026-11-01",
+    "sha256": "51c89a9e8f2cf914495d49b7e8169ce6a08d7339f1497b327996b8b470ec64f0"
+  }
+]

@@ -1,0 +1,77 @@
+// Controls
+Capacity kWp = SELECTEDVALUE(Capacity[CapacitykWp],100)
+
+// Controls
+Performance Ratio = DIVIDE(SELECTEDVALUE(PerformanceRatio[PRPercent],80),100)
+
+// Controls
+Rain Threshold = SELECTEDVALUE(RainThreshold[MM],10)
+
+// Base
+City Days = COUNTROWS(FactWeather)
+
+// Data quality
+Observed Solar Days = COUNT(FactWeather[SolarKWhM2])
+
+// Data quality
+Solar Coverage = DIVIDE([Observed Solar Days],[City Days])
+
+// Base
+Mean Daily Solar = AVERAGE(FactWeather[SolarKWhM2])
+
+// Base
+Rainfall Total = SUM(FactWeather[RainMM])
+
+// Base
+Mean Max Temperature = AVERAGE(FactWeather[MaxTempC])
+
+// Scenario
+Scenario Energy kWh = SUM(FactWeather[SolarKWhM2])*[Capacity kWp]*[Performance Ratio]
+
+// Scenario
+Scenario Energy MWh = DIVIDE([Scenario Energy kWh],1000)
+
+// Time intelligence
+Energy Prior Year = CALCULATE([Scenario Energy kWh],DATEADD(DimDate[Date],-1,YEAR))
+
+// Time intelligence
+Energy YoY Pct = IF(HASONEVALUE(DimDate[Year]),DIVIDE([Scenario Energy kWh]-[Energy Prior Year],[Energy Prior Year]))
+
+// Time intelligence
+Energy YTD kWh = IF(HASONEVALUE(DimDate[Year]),TOTALYTD([Scenario Energy kWh],DimDate[Date]))
+
+// Time intelligence
+Energy Rolling 30D = VAR D=MAX(DimDate[Date]) RETURN CALCULATE([Scenario Energy kWh],REMOVEFILTERS(DimDate),DATESINPERIOD(DimDate[Date],D,-30,DAY))
+
+// Scenario
+Adverse City Days = VAR R=[Rain Threshold] RETURN COUNTROWS(FILTER(FactWeather,(NOT ISBLANK(FactWeather[RainMM])&&FactWeather[RainMM]>=R)||(NOT ISBLANK(FactWeather[MaxTempC])&&FactWeather[MaxTempC]>=35)||(NOT ISBLANK(FactWeather[WindMS])&&FactWeather[WindMS]>=10)))
+
+// Scenario
+Adverse Day Share = DIVIDE([Adverse City Days],[City Days])
+
+// Benchmarking
+Solar Rank = RANKX(ALLSELECTED(DimCity[City]),[Mean Daily Solar],,DESC,DENSE)
+
+// Benchmarking
+Network Mean Solar = CALCULATE([Mean Daily Solar],REMOVEFILTERS(DimCity))
+
+// Benchmarking
+Solar Gap vs Network = [Mean Daily Solar]-[Network Mean Solar]
+
+// Benchmarking
+Historical Monthly Baseline = VAR M=SELECTEDVALUE(DimDate[MonthNumber]) RETURN IF(NOT ISBLANK(M),CALCULATE([Mean Daily Solar],REMOVEFILTERS(DimDate),DimDate[MonthNumber]=M,DimDate[Year]>=2020,DimDate[Year]<=2024))
+
+// Benchmarking
+Solar Anomaly Pct = DIVIDE([Mean Daily Solar]-[Historical Monthly Baseline],[Historical Monthly Baseline])
+
+// Data quality
+Duplicate City Dates = COUNTROWS(FactWeather)-COUNTROWS(SUMMARIZE(FactWeather,FactWeather[City],FactWeather[Date]))
+
+// Data quality
+Missing Solar Values = [City Days]-[Observed Solar Days]
+
+// Narrative
+Scenario Caption = "Illustrative equal-size systems: " & FORMAT([Capacity kWp],"#,0") & " kWp per city × " & FORMAT([Performance Ratio],"0%") & " performance ratio"
+
+// Narrative
+Energy Chart Title = "Monthly scenario energy (kWh) | " & FORMAT([Capacity kWp],"#,0") & " kWp per selected city"

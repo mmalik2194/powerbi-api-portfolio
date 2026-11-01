@@ -1,0 +1,16 @@
+{
+  "schema_files_validated": 103,
+  "development_2024": {
+    "covered_population": 8117484624.0,
+    "life_expectancy": 73.460779852329,
+    "gdp_ppp_per_capita": 21495.07332678265,
+    "life_reporting_countries": 217,
+    "life_coverage": 1.0
+  },
+  "solar_all_cities_2020_2025": {
+    "rows": 10960,
+    "mean_daily_solar": 4.978070410583942,
+    "scenario_energy_kWh_100kWp_PR80": 4364772.136,
+    "adverse_share": 0.07363138686131387
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "Portfolio executive",
+  "dataColors": [
+    "#177F8A",
+    "#E7A43B",
+    "#405D82",
+    "#9A73B5",
+    "#C65A45",
+    "#5A927B",
+    "#8B9AAC"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#20384D",
+  "tableAccent": "#177F8A",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#5D7286"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#20384D"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 26,
+      "color": "#183750"
+    }
+  }
+}

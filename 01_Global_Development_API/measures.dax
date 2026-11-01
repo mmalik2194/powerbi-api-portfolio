@@ -1,0 +1,89 @@
+// Controls
+Report Year = SELECTEDVALUE(AsOfYear[Year], MAX(AsOfYear[Year]))
+
+// Controls
+Metric Name = SELECTEDVALUE(MetricSelector[Metric], "Life expectancy")
+
+// Controls
+Top N = SELECTEDVALUE(RankControl[Count],10)
+
+// Base measures
+Total Population = IF(HASONEVALUE(DimYear[Year]),SUM(FactDevelopment[Population]))
+
+// Base measures
+Life Expectancy = VAR R = FILTER(FactDevelopment, NOT ISBLANK(FactDevelopment[LifeExpectancy]) && FactDevelopment[Population] > 0) RETURN IF(HASONEVALUE(DimYear[Year]), DIVIDE(SUMX(R,FactDevelopment[Population]*FactDevelopment[LifeExpectancy]), SUMX(R,FactDevelopment[Population])))
+
+// Base measures
+GDP PPP per Capita = VAR R = FILTER(FactDevelopment, NOT ISBLANK(FactDevelopment[GDPperCapitaPPP]) && FactDevelopment[Population] > 0) RETURN IF(HASONEVALUE(DimYear[Year]), DIVIDE(SUMX(R,FactDevelopment[Population]*FactDevelopment[GDPperCapitaPPP]), SUMX(R,FactDevelopment[Population])))
+
+// Base measures
+Unemployment = IF(HASONEVALUE(DimYear[Year]), AVERAGE(FactDevelopment[UnemploymentPct]))
+
+// Metric switch
+Selected Metric = SWITCH([Metric Name],"GDP PPP per capita",[GDP PPP per Capita],"Unemployment rate",[Unemployment],[Life Expectancy])
+
+// Snapshot
+Snapshot Metric = VAR Y=[Report Year] RETURN CALCULATE([Selected Metric],REMOVEFILTERS(DimYear),DimYear[Year]=Y)
+
+// Snapshot
+Snapshot Population = VAR Y=[Report Year] RETURN DIVIDE(CALCULATE([Total Population],REMOVEFILTERS(DimYear),DimYear[Year]=Y),1000000000)
+
+// Snapshot
+Snapshot Life = VAR Y=[Report Year] RETURN CALCULATE([Life Expectancy],REMOVEFILTERS(DimYear),DimYear[Year]=Y)
+
+// Snapshot
+Snapshot GDP = VAR Y=[Report Year] RETURN CALCULATE([GDP PPP per Capita],REMOVEFILTERS(DimYear),DimYear[Year]=Y)
+
+// Comparisons
+Previous Year Metric = VAR Y=[Report Year]-1 RETURN CALCULATE([Selected Metric],REMOVEFILTERS(DimYear),DimYear[Year]=Y)
+
+// Comparisons
+YoY Change = VAR P=[Previous Year Metric] RETURN IF(NOT ISBLANK(P) && NOT ISBLANK([Snapshot Metric]),[Snapshot Metric]-P)
+
+// Comparisons
+YoY Change Pct = DIVIDE([YoY Change],[Previous Year Metric])
+
+// Comparisons
+Peer Benchmark = VAR R=SELECTEDVALUE(DimCountry[Region]) RETURN CALCULATE([Snapshot Metric],FILTER(ALL(DimCountry),ISBLANK(R)||DimCountry[Region]=R))
+
+// Comparisons
+Gap vs Peers = IF(NOT ISBLANK([Snapshot Metric]),[Snapshot Metric]-[Peer Benchmark])
+
+// Ranking
+Country Rank = VAR V=[Snapshot Metric] VAR T=FILTER(ALLSELECTED(DimCountry[Country]),NOT ISBLANK(CALCULATE([Snapshot Metric]))) RETURN IF(NOT ISBLANK(V),IF([Metric Name]="Unemployment rate",RANKX(T,[Snapshot Metric],,ASC,DENSE),RANKX(T,[Snapshot Metric],,DESC,DENSE)))
+
+// Ranking
+Top N Metric = IF([Country Rank]<=[Top N],[Snapshot Metric])
+
+// Trends
+Indexed Trend = VAR B=CALCULATE([Selected Metric],REMOVEFILTERS(DimYear),DimYear[Year]=2000) RETURN IF(MAX(DimYear[Year])<=[Report Year],DIVIDE([Selected Metric],B)*100)
+
+// Trends
+Metric Trend = IF(MAX(DimYear[Year])<=[Report Year],[Selected Metric])
+
+// Trends
+GDP CAGR Since 2000 = VAR Y=[Report Year] VAR B=CALCULATE([GDP PPP per Capita],REMOVEFILTERS(DimYear),DimYear[Year]=2000) RETURN IF(Y>2000 && B>0 && [Snapshot GDP]>0,POWER(DIVIDE([Snapshot GDP],B),1/(Y-2000))-1)
+
+// Data quality
+Reporting Countries = VAR Y=[Report Year] VAR R=CALCULATETABLE(FactDevelopment,REMOVEFILTERS(DimYear),DimYear[Year]=Y) RETURN COUNTROWS(FILTER(R,SWITCH([Metric Name],"GDP PPP per capita",NOT ISBLANK(FactDevelopment[GDPperCapitaPPP]),"Unemployment rate",NOT ISBLANK(FactDevelopment[UnemploymentPct]),NOT ISBLANK(FactDevelopment[LifeExpectancy]))))
+
+// Data quality
+Country Coverage = DIVIDE([Reporting Countries],COUNTROWS(DimCountry))
+
+// Data quality
+Missing Metric Rows = COUNTROWS(DimCountry)-[Reporting Countries]
+
+// Data quality
+Duplicate Keys = COUNTROWS(FactDevelopment)-COUNTROWS(SUMMARIZE(FactDevelopment,FactDevelopment[ISO3],FactDevelopment[Year]))
+
+// Narrative
+Ranking Title = "Top " & FORMAT([Top N],"0") & " countries | " & [Metric Name] & " | " & FORMAT([Report Year],"0")
+
+// Narrative
+Context Caption = [Metric Name] & " | " & FORMAT([Report Year],"0") & " | " & FORMAT([Reporting Countries],"0") & " reporting economies"
+
+// Narrative
+Country Caption = SELECTEDVALUE(DimCountry[Country],"Select one country or drill through from the ranking")
+
+// Data quality
+Refresh Mode = IF(COUNTROWS(RefreshInfo)>0,MAX(RefreshInfo[Mode]))

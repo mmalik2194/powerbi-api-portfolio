@@ -1,0 +1,10 @@
+_build/
+**/.pbi/
+**/__pycache__/
+*.pbix
+*.abf
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db

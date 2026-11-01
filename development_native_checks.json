@@ -1,0 +1,30 @@
+[
+  {
+    "[Test]": "Default 2024 life",
+    "[Value]": 73.46077985232901
+  },
+  {
+    "[Test]": "Australia 2024 life",
+    "[Value]": 83.0512195121951
+  },
+  {
+    "[Test]": "GDP metric switch",
+    "[Value]": 21495.07332678264
+  },
+  {
+    "[Test]": "Life 2000",
+    "[Value]": 67.6180655887266
+  },
+  {
+    "[Test]": "2000 baseline index",
+    "[Value]": 100.0
+  },
+  {
+    "[Test]": "Duplicate keys",
+    "[Value]": 0.0
+  },
+  {
+    "[Test]": "Top 5 count",
+    "[Value]": 5.0
+  }
+]

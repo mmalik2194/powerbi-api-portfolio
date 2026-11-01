@@ -1,0 +1,25 @@
+{
+  "development": {
+    "countries": 217,
+    "rows": 5425,
+    "years": [
+      2000,
+      2024
+    ],
+    "measures": 30,
+    "default_year": 2024
+  },
+  "solar": {
+    "cities": 5,
+    "rows": 10960,
+    "dates": 2192,
+    "measures": 26,
+    "fill_counts": {
+      "Sydney": 0,
+      "Melbourne": 0,
+      "Brisbane": 0,
+      "Perth": 0,
+      "Adelaide": 0
+    }
+  }
+}
