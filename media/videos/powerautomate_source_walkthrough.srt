@@ -1,0 +1,16 @@
+1
+00:00:00,000 --> 00:00:08,000
+Overdue Inspection Escalation. Source-kit explanation; no emails sent or cloud flow deployed.
+
+2
+00:00:08,000 --> 00:00:16,000
+Conceptual daily digest: query, filter, deduplicate, send and stamp only after success.
+
+3
+00:00:16,000 --> 00:00:24,000
+Local selection logic uses UTC timestamps and excludes same-day reminders.
+
+4
+00:00:24,000 --> 00:00:32,000
+Nine tests passed locally. Four synthetic requests qualify at the fixed demonstration timestamp.
+

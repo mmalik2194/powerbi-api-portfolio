@@ -53,7 +53,13 @@ python -m unittest test_simulate.py
 python simulate.py
 ```
 
-Additional Power Platform screenshots and demonstration videos will be prepared separately after native tenant setup. No messages have been sent by these projects.
+Source-based Power Platform illustrations and explainer videos are available in the media gallery. Native app/designer screenshots still require tenant setup. No messages have been sent by these projects.
+
+## Screenshots and video walkthroughs
+
+**[View the media gallery](MEDIA.md)** · **[Download all media](https://github.com/mmalik2194/powerbi-api-portfolio/releases/download/v1.2.0/Portfolio_Media_Pack.zip)**
+
+Includes six native Desktop screenshots, ten editable portfolio illustrations and four captioned videos. Power BI videos use real report captures. Power Platform videos explain the source kits and are labelled as conceptual, with tenant deployment pending.
 
 ## Technical evidence
 

@@ -1,0 +1,16 @@
+1
+00:00:00,000 --> 00:00:08,000
+Airport Inspection Tracker. Source-kit explanation; native tenant deployment is pending.
+
+2
+00:00:08,000 --> 00:00:16,000
+Conceptual master-detail architecture: public airport assets and synthetic inspection issues.
+
+3
+00:00:16,000 --> 00:00:24,000
+Abbreviated validation and record-creation logic. Use the complete PowerFx.fx implementation.
+
+4
+00:00:24,000 --> 00:00:32,000
+Tenant implementation and acceptance-test plan. This is not a deployed native-app recording.
+

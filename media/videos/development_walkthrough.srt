@@ -1,0 +1,16 @@
+1
+00:00:00,000 --> 00:00:08,000
+Development Intelligence. A personal World Bank API project with 217 economies and 30 DAX measures.
+
+2
+00:00:08,000 --> 00:00:16,000
+Executive comparisons: metric selection, weighted KPIs and Top N country ranking. Native Desktop screenshot.
+
+3
+00:00:16,000 --> 00:00:24,000
+Country drillthrough: selected-country detail, regional peer gap and indexed history. Native Desktop screenshot.
+
+4
+00:00:24,000 --> 00:00:32,000
+Coverage, missing values and duplicate-key controls. Native Desktop screenshot.
+

@@ -1,0 +1,46 @@
+[
+  {
+    "file": "media/videos/development_walkthrough.mp4",
+    "duration_seconds": 32.02,
+    "resolution": "1920x1080",
+    "fps": 24,
+    "audio": "silent AAC track",
+    "type": "captioned screenshot walkthrough",
+    "size_bytes": 670054,
+    "decode_check": "passed",
+    "sha256": "3d95543ebb6303a454171f50f3371848e3b2af14218e788ffe1139505efae9cd"
+  },
+  {
+    "file": "media/videos/solar_walkthrough.mp4",
+    "duration_seconds": 32.02,
+    "resolution": "1920x1080",
+    "fps": 24,
+    "audio": "silent AAC track",
+    "type": "captioned screenshot walkthrough",
+    "size_bytes": 729443,
+    "decode_check": "passed",
+    "sha256": "bf6f7358ebc4574ea9845365fdf6f40dbfb692eac8b87f18529ebb53123bc932"
+  },
+  {
+    "file": "media/videos/powerapps_source_walkthrough.mp4",
+    "duration_seconds": 32.02,
+    "resolution": "1920x1080",
+    "fps": 24,
+    "audio": "silent AAC track",
+    "type": "source-kit explainer with conceptual diagrams",
+    "size_bytes": 553257,
+    "decode_check": "passed",
+    "sha256": "8d32d74adff07f29e4758ef9bc6b33654b5163ff8727a68a9f2e5a097ef77179"
+  },
+  {
+    "file": "media/videos/powerautomate_source_walkthrough.mp4",
+    "duration_seconds": 32.02,
+    "resolution": "1920x1080",
+    "fps": 24,
+    "audio": "silent AAC track",
+    "type": "source-kit explainer with conceptual diagrams",
+    "size_bytes": 513333,
+    "decode_check": "passed",
+    "sha256": "3abf23c7d113613699850712112bb1f8a347cf933c89a89f01c3b5d98d36f128"
+  }
+]

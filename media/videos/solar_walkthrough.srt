@@ -1,0 +1,16 @@
+1
+00:00:00,000 --> 00:00:08,000
+Solar Resource and Weather Intelligence. NASA POWER data for five cities. Energy is a modeled scenario.
+
+2
+00:00:08,000 --> 00:00:16,000
+Resource comparisons and capacity/performance controls. Native Desktop screenshot.
+
+3
+00:00:16,000 --> 00:00:24,000
+Rolling 30-day analysis and monthly anomalies. YoY is intentionally blank until one year is selected.
+
+4
+00:00:24,000 --> 00:00:32,000
+Completeness, duplicate keys and explicit model assumptions. Native Desktop screenshot.
+
